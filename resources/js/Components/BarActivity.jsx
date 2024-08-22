@@ -15,6 +15,7 @@ const BarActivity = () => {
     };
 
     return (
+        // Bar Activity
         <div className="p-8 max-w-md mx-auto bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl shadow-lg space-y-6">
             <h2 className="text-3xl font-extrabold text-center text-blue-600">
                 Bar Activity
