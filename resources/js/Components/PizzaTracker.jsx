@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import BarActivity from "./BarActivity";
+import PizzaDeliveries from "./PizzaDeliveries";
 
 const PizzaTracker = () => {
     const [pizzaDeliveries, setPizzaDeliveries] = useState(0);
@@ -7,34 +9,33 @@ const PizzaTracker = () => {
 
     useEffect(() => {
         // Fetch data or update states here
-        // This is where you'd typically make API calls or update the state based on real-time data
-        // For now, we'll use placeholder values
         setPizzaDeliveries(150);
         setBarActivity(75);
     }, []);
 
     useEffect(() => {
-        // Calculate the ratio whenever pizzaDeliveries or barActivity changes
         if (barActivity !== 0) {
             setRatio(pizzaDeliveries / barActivity);
         }
     }, [pizzaDeliveries, barActivity]);
 
     return (
-        <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-4">
-            <h2 className="text-2xl font-bold text-center">DC Pizza Tracker</h2>
-            <div className="space-y-2">
-                <div className="flex justify-between">
-                    <span>Pizza Deliveries:</span>
-                    <span className="font-bold">{pizzaDeliveries}</span>
-                </div>
-                <div className="flex justify-between">
-                    <span>Bar Activity Level:</span>
-                    <span className="font-bold">{barActivity}</span>
-                </div>
-                <div className="flex justify-between">
-                    <span>Pizza to Bar Ratio:</span>
-                    <span className="font-bold">{ratio.toFixed(2)}</span>
+        <div className="p-8 max-w-4xl mx-auto">
+            <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-8">DC Pizza Meter</h1>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <PizzaDeliveries />
+                <BarActivity />
+                <div className="bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl shadow-lg p-6">
+                    <h2 className="text-3xl font-extrabold text-center text-purple-600 mb-4">Pizza to Bar Ratio</h2>
+                    <div className="bg-white p-4 rounded-xl shadow-inner">
+                        <div className="flex items-center justify-between">
+                            <span className="text-4xl font-bold text-purple-500">{ratio.toFixed(2)}</span>
+                            <span className="text-3xl">{ratio > 1 ? "🍕" : "🍺"}</span>
+                        </div>
+                    </div>
+                    <p className="text-center text-gray-600 text-sm mt-4">
+                        Last updated: {new Date().toLocaleString()}
+                    </p>
                 </div>
             </div>
         </div>

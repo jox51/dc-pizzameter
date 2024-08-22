@@ -2,6 +2,7 @@ import { Link, Head } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
 import Hero from "@/Components/Hero";
 import PizzaTracker from "@/Components/PizzaTracker";
+import Footer from "@/Components/Footer";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     const handleImageError = () => {
@@ -16,11 +17,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     };
 
     return (
-        <div className="flex-col justify-center items-center box-border">
+        <div className="flex-col justify-center items-center box-border max-w-7xl mx-auto">
             <Head title="Welcome" />
             <Navbar />
             <Hero />
             <PizzaTracker />
+            <Footer />
             {/* <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <img
                     id="background"
