@@ -24,7 +24,7 @@ const PizzaTracker = () => {
         setBarActivity(averages.bar_average_popularity);
         setRatio(() => averages.pizza_bar_ratio);
         setLoading(false);
-        console.log({ error, averages, ratio });
+        console.log({ error, averages, ratio, pizzaDeliveries, barActivity });
     }, [loading]);
 
     if (loading) {
