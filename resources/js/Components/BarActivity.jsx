@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const BarActivity = () => {
-    const [barActivity, setBarActivity] = useState(0);
-
-    useEffect(() => {
-        // Fetch data or update state here
-        setBarActivity(75);
-    }, []);
-
+const BarActivity = ({ barActivity }) => {
     const getEmoji = (value) => {
         if (value > 100) return "🔥";
         if (value > 50) return "😊";

@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const PizzaDeliveries = () => {
-    const [pizzaDeliveries, setPizzaDeliveries] = useState(0);
-
-    useEffect(() => {
-        // Fetch data or update state here
-        setPizzaDeliveries(150);
-    }, []);
-
+const PizzaDeliveries = ({ pizzaDeliveries }) => {
     const getEmoji = (value) => {
         if (value > 100) return "🔥";
         if (value > 50) return "😊";
