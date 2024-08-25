@@ -28,12 +28,20 @@ class PopularTimesService
                     Log::info('2. Processing PlaceId: ' . $placeId . ' of type: ' . $type);
 
                     $process = new Process([
-                        'poetry',
-                        'run',
-                        'python',
-                        'main.py',
-                        $placeId
+                      "/home/forge/.local/pipx/venvs/poetry/bin/poetry",
+                      "run",
+                      "python",
+                      "main.py",
+                      $placeId
                     ]);
+
+                    // $process = new Process([
+                    //     'poetry',
+                    //     'run',
+                    //     'python',
+                    //     'main.py',
+                    //     $placeId
+                    // ]);
                     
                     $process->setWorkingDirectory(base_path('scripts/LivePopularTimes'));
                     $process->run();

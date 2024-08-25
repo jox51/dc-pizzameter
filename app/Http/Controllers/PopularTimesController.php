@@ -21,10 +21,10 @@ class PopularTimesController extends Controller
     public function getPopularTimes()
     {
         // Fetch popular times and save to database
-        // $this->popularTimesService->fetchPopularTimes();
+        $this->popularTimesService->fetchPopularTimes();
 
         // Calculate and save averages
-        // $this->popularityAverageService->calculateAndSaveAverages();
+        $this->popularityAverageService->calculateAndSaveAverages();
 
         // Get the latest averages
         $averages = $this->popularityAverageService->getLatestAverages()->toArray();
