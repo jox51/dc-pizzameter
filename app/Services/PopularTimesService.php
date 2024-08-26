@@ -28,7 +28,7 @@ class PopularTimesService
                     Log::info('2. Processing PlaceId: ' . $placeId . ' of type: ' . $type);
 
                     $process = new Process([
-                      "/home/forge/.local/pipx/venvs/poetry/bin/poetry",
+                      '/home/forge/.local/share/pypoetry/venv/bin/poetry',
                       "run",
                       "python",
                       "main.py",
