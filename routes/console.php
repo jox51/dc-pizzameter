@@ -1,14 +1,21 @@
 <?php
 
+use App\Http\Controllers\PopularTimesController;
+use Illuminate\Support\Facades\Schedule;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+
+Schedule::command('meter:fetch-popularity')->hourly();
+
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
-// Add the new command for fetching pizza data
-Artisan::command('pizza:fetch-data', function () {
-    $output = shell_exec('python3 ' . base_path('python/main.py'));
-    $this->info('Pizza data fetched successfully.');
-})->purpose('Fetch pizza data using Python script');
+
+// Registering a custom console command
+Artisan::command('meter:fetch-popularity', function (PopularTimesController $popularTimesController) {
+    $popularTimesController->getPopularTimes();
+
+    $this->info('Fetching popularity data');
+})->describe('Fetch and process popularity data');

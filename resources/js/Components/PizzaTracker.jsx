@@ -10,26 +10,26 @@ const PizzaTracker = () => {
     const { error, averages } = usePage().props;
     const [loading, setLoading] = useState(true);
 
-    // useEffect(() => {
-    //     if (loading && !averages) {
-    //         router.visit(route("popular-times"), {
-    //             method: "get",
-    //             preserveState: true,
-    //             preserveScroll: true,
-    //             only: ["averages"],
-    //             replace: false,
-    //         });
-    //     }
-    //     setPizzaDeliveries(averages.pizza_average_popularity);
-    //     setBarActivity(averages.bar_average_popularity);
-    //     setRatio(() => averages.pizza_bar_ratio);
-    //     setLoading(false);
-    //     console.log({ error, averages, ratio });
-    // }, [loading]);
+    useEffect(() => {
+        if (loading && !averages) {
+            router.visit(route("popular-times"), {
+                method: "get",
+                preserveState: true,
+                preserveScroll: true,
+                only: ["averages"],
+                replace: false,
+            });
+        }
+        setPizzaDeliveries(averages.pizza_average_popularity);
+        setBarActivity(averages.bar_average_popularity);
+        setRatio(() => averages.pizza_bar_ratio);
+        setLoading(false);
+        console.log({ error, averages, ratio });
+    }, [loading]);
 
-    // if (loading) {
-    //     return <div>Loading...</div>;
-    // }
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="p-8 max-w-4xl mx-auto">
