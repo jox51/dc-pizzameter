@@ -12,7 +12,7 @@ const PizzaTracker = () => {
 
     useEffect(() => {
         if (loading && !averages) {
-            router.visit(route("popular-times"), {
+            router.visit(route("popular-data"), {
                 method: "get",
                 preserveState: true,
                 preserveScroll: true,

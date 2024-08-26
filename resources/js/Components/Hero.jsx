@@ -6,18 +6,18 @@ const Hero = () => {
     const { error, averages } = usePage().props;
     const [loading, setLoading] = React.useState(false);
 
-    const handleTrackOrder = () => {
-        setLoading(true);
-        router.get(
-            "popular-times",
-            {},
-            {
-                preserveState: true,
-                preserveScroll: true,
-                onFinish: () => setLoading(false),
-            }
-        );
-    };
+    // const handleTrackOrder = () => {
+    //     setLoading(true);
+    //     router.get(
+    //         "popular-times",
+    //         {},
+    //         {
+    //             preserveState: true,
+    //             preserveScroll: true,
+    //             onFinish: () => setLoading(false),
+    //         }
+    //     );
+    // };
 
     return (
         <div className="relative bg-gradient-to-br from-red-500 to-orange-400 min-h-screen flex items-center justify-center overflow-hidden">
@@ -38,7 +38,7 @@ const Hero = () => {
                 <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <button
                         className="btn bg-white text-red-600 hover:bg-red-50 hover:text-red-700 transition duration-300 ease-in-out transform hover:scale-105 shadow-md"
-                        onClick={handleTrackOrder}
+                        // onClick={handleTrackOrder}
                         disabled={loading}
                     >
                         {loading ? "Loading..." : "Track Your Order"}
