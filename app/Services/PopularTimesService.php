@@ -27,6 +27,9 @@ class PopularTimesService
                 try {
                     Log::info('2. Processing PlaceId: ' . $placeId . ' of type: ' . $type);
 
+                    // set max execution time to 50 minutes
+    set_time_limit(3000);
+
                     $process = new Process([
                       '/home/forge/.local/share/pypoetry/venv/bin/poetry',
                       "run",
