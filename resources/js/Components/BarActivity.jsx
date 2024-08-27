@@ -21,9 +21,6 @@ const BarActivity = ({ barActivity }) => {
                     <span className="text-3xl">{getEmoji(barActivity)}</span>
                 </div>
             </div>
-            <p className="text-center text-gray-600 text-sm">
-                Last updated: {new Date().toLocaleString()}
-            </p>
         </div>
     );
 };

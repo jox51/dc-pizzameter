@@ -27,8 +27,8 @@ class PopularTimesController extends Controller
         $this->popularityAverageService->calculateAndSaveAverages();
 
         // Get the latest averages
-        // $averages = $this->popularityAverageService->getLatestAverages()->toArray();
-        // dd($averages);
+        $averages = $this->popularityAverageService->getLatestAverages()->toArray();
+        dd($averages);
        
         // $latestIterationId = PopularityData::max('iteration_id');
         // $popularTimes = PopularityData::where('iteration_id', $latestIterationId)->get()->toArray();

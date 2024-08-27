@@ -1,71 +1,47 @@
 import React from "react";
-import PizzaLogo from "./Logo";
+import { Link } from "@inertiajs/react";
+import { Pizza, Beer } from "lucide-react";
 
 const Navbar = () => {
     return (
-        <>
-            <div className="w-full flex justify-between md:hidden ">
-                <a className="btn btn-ghost text-lg">
-                    <PizzaLogo />
-                    DC Pizza Meter
-                </a>
-
-                <div className="dropdown dropdown-end">
-                    <button className="btn btn-ghost">
-                        <i className="fa-solid fa-bars text-lg"></i>
-                    </button>
-
-                    <ul
-                        tabindex="0"
-                        className="dropdown-content menu z-[1] bg-base-200 p-6 rounded-box shadow w-56 gap-2"
-                    >
-                        <li>
-                            <a>About</a>
-                        </li>
-                        <li>
-                            <a>Regions</a>
-                        </li>
-                        <li>
-                            <a>Statistics</a>
-                        </li>
-                        <li>
-                            <a>Contact</a>
-                        </li>
-                        <a className="btn btn-primary btn-sm">
-                            <i className="fa-solid fa-pizza-slice"></i>
-                            Track Now
-                        </a>
-                    </ul>
+        <nav className="bg-white shadow-md">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-16">
+                    <div className="flex items-center">
+                        <Link
+                            href="/"
+                            className="flex-shrink-0 flex items-center"
+                        >
+                            <Pizza className="h-8 w-auto text-red-500" />
+                            <Beer className="h-8 w-auto text-amber-500 ml-2" />
+                            <span className="ml-2 text-xl font-bold text-gray-800">
+                                DC Pizza Meter
+                            </span>
+                        </Link>
+                    </div>
+                    <div className="flex items-center">
+                        <Link
+                            href="/features"
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                            Features
+                        </Link>
+                        <Link
+                            href="/about"
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                            About
+                        </Link>
+                        <Link
+                            href="/contact"
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                        >
+                            Contact
+                        </Link>
+                    </div>
                 </div>
             </div>
-
-            <div className="w-full hidden md:flex justify-between items-center px-4">
-                <a className="btn btn-ghost text-xl">
-                    <PizzaLogo />
-                    DC Pizza Meter
-                </a>
-
-                <ul className="menu menu-horizontal px-1">
-                    <li>
-                        <a>About</a>
-                    </li>
-                    <li>
-                        <a>Regions</a>
-                    </li>
-                    <li>
-                        <a>Statistics</a>
-                    </li>
-                    <li>
-                        <a>Contact</a>
-                    </li>
-                </ul>
-
-                <a className="btn btn-primary">
-                    <i className="fa-solid fa-pizza-slice mr-2"></i>
-                    Track Now
-                </a>
-            </div>
-        </>
+        </nav>
     );
 };
 

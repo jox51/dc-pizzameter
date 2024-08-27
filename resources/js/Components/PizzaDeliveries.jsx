@@ -22,9 +22,6 @@ const PizzaDeliveries = ({ pizzaDeliveries }) => {
                     </span>
                 </div>
             </div>
-            <p className="text-center text-gray-600 text-sm">
-                Last updated: {new Date().toLocaleString()}
-            </p>
         </div>
     );
 };

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Location;
 use App\Models\PopularityData;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PopularTimesService
 {
@@ -92,6 +93,7 @@ class PopularTimesService
                 'type' => $data['type'],
                 'current_popularity' => $data['current_popularity'] ?? null,
                 'iteration_id' => $data['iteration_id'],
+                'created_at' => Carbon::now(), // Explicitly set the creation time
             ]);
             Log::info('Popularity data saved for: ' . $data['name'] . ' (Type: ' . $data['type'] . ', Iteration: ' . $data['iteration_id'] . ')');
         } else {
@@ -101,6 +103,18 @@ class PopularTimesService
 
     private function getNewIterationId()
     {
-        return DB::table('popularity_data')->max('iteration_id') + 1;
+        $currentYear = Carbon::now()->year;
+        $firstDayOfYear = Carbon::create($currentYear, 1, 1)->startOfDay();
+
+        $latestRecord = DB::table('popularity_data')
+            ->where('created_at', '>=', $firstDayOfYear)
+            ->orderBy('iteration_id', 'desc')
+            ->first();
+
+        if ($latestRecord) {
+            return $latestRecord->iteration_id + 1;
+        }
+
+        return 1; // Start with 1 for the first iteration of the year
     }
 }

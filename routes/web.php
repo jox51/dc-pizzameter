@@ -25,6 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/popular-times', [PopularTimesController::class, 'getPopularityData'])->name('popular-data');
+Route::get('/popular-data', [PopularTimesController::class, 'getPopularityData'])->name('popular-data');
+
+// Route::get('/popular-activity', [PopularTimesController::class, 'getPopularTimes'])->name('popular-activity');
 
 require __DIR__.'/auth.php';

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\PopularityData;
 use App\Models\PopularityAverage;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PopularityAverageService
 {
@@ -48,6 +49,11 @@ class PopularityAverageService
             $averages->pizza_average_popularity = round($averages->pizza_average_popularity, 2);
             $averages->bar_average_popularity = round($averages->bar_average_popularity, 2);
             $averages->pizza_bar_ratio = round($averages->pizza_bar_ratio, 2);
+            
+            // Convert UTC to Eastern Time and format the updated_at timestamp
+            $averages->last_updated = $averages->updated_at
+                ->setTimezone('America/New_York')
+                ->format('F j, Y g:i A T'); // March 15, 2023 7:38 PM EDT
         }
 
         return $averages;
