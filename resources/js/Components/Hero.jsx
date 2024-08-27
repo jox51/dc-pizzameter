@@ -17,7 +17,7 @@ const Hero = () => {
                     </p>
                     <div className="flex justify-center space-x-4">
                         {/* <Link
-                            href="/popular-activity"
+                            href={route("popular-activity")}
                             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                         >
                             Start Monitoring

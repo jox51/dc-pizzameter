@@ -15,6 +15,7 @@ class PopularityAverage extends Model
         'bar_average_popularity',
         'pizza_bar_ratio',
         'pizza_count',
-        'bar_count'
+        'bar_count',
+        'event_probability_tier'
     ];
 }

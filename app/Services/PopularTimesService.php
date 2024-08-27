@@ -31,6 +31,7 @@ class PopularTimesService
                     // set max execution time to 50 minutes
                     set_time_limit(3000);
 
+                    // Below is for server (Forge)
                     $process = new Process([
                       '/home/forge/.local/share/pypoetry/venv/bin/poetry',
                       "run",
@@ -39,6 +40,7 @@ class PopularTimesService
                       $placeId
                     ]);
 
+                    // Below is for local testing
                     // $process = new Process([
                     //     'poetry',
                     //     'run',

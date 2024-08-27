@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PopularTimesController;
+use App\Http\Controllers\EmailPreviewController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Mail\EventProbabilityAlert;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -27,6 +30,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/popular-data', [PopularTimesController::class, 'getPopularityData'])->name('popular-data');
 
+Route::get('/contact', function () {
+return Inertia::render('Contact');})->name('contact');
+
 // Route::get('/popular-activity', [PopularTimesController::class, 'getPopularTimes'])->name('popular-activity');
+
+Route::get('/email/preview', [EmailPreviewController::class, 'previewEventProbabilityAlert']);
 
 require __DIR__.'/auth.php';

@@ -7,6 +7,7 @@ const PizzaTracker = () => {
     const [pizzaDeliveries, setPizzaDeliveries] = useState(0);
     const [barActivity, setBarActivity] = useState(0);
     const [ratio, setRatio] = useState(0);
+    const [eventProbabilityTier, setEventProbabilityTier] = useState("Low");
     const [lastUpdated, setLastUpdated] = useState("");
     const { error, averages } = usePage().props;
     const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ const PizzaTracker = () => {
         setPizzaDeliveries(averages?.pizza_average_popularity || 0);
         setBarActivity(averages?.bar_average_popularity || 0);
         setRatio(() => averages?.pizza_bar_ratio || 0);
+        setEventProbabilityTier(averages?.event_probability_tier || "Low");
         setLastUpdated(averages?.last_updated || "");
         setLoading(false);
         console.log({ error, averages, ratio });
@@ -32,12 +34,6 @@ const PizzaTracker = () => {
     if (loading) {
         return <div>Loading...</div>;
     }
-
-    const getEventProbability = (ratio) => {
-        if (ratio > 2) return "High";
-        if (ratio > 1) return "Medium";
-        return "Low";
-    };
 
     const getEventEmoji = (probability) => {
         if (probability === "High") return "🚨";
@@ -61,10 +57,10 @@ const PizzaTracker = () => {
                         <div className="flex flex-col items-center">
                             <div className="flex items-center justify-center w-full">
                                 <span className="text-4xl font-bold text-purple-500 pr-6">
-                                    {getEventProbability(ratio)}
+                                    {eventProbabilityTier}
                                 </span>
                                 <span className="text-4xl ml-2">
-                                    {getEventEmoji(getEventProbability(ratio))}
+                                    {getEventEmoji(eventProbabilityTier)}
                                 </span>
                             </div>
                             <span className="text-sm text-gray-500 mt-2">
