@@ -4,7 +4,7 @@ import { AlertTriangle, TrendingUp, Users } from "lucide-react";
 const Explanation = () => {
     return (
         <div
-            className="bg-gradient-to-b from-pink-100 to-white py-16"
+            className="bg-gradient-to-b from-pink-100 to-white py-16 mt-4"
             id="explanation"
         >
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

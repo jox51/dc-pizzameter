@@ -4,6 +4,7 @@ import Hero from "@/Components/Hero";
 import PizzaTracker from "@/Components/PizzaTracker";
 import Explanation from "@/Components/Explanation";
 import Footer from "@/Components/Footer";
+import EmailSubscribe from "@/Components/EmailSubscribe";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
@@ -13,6 +14,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             <Hero />
             <main className="flex-grow">
                 <PizzaTracker />
+                <EmailSubscribe />
                 <Explanation />
             </main>
             <Footer />

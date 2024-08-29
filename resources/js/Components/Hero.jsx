@@ -16,12 +16,12 @@ const Hero = () => {
                         in DC.
                     </p>
                     <div className="flex justify-center space-x-4">
-                        {/* <Link
-                            href={route("popular-activity")}
+                        <Link
+                            href={route("mailchimp")}
                             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                         >
                             Start Monitoring
-                        </Link> */}
+                        </Link>
                         <Link
                             href="#explanation"
                             className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
