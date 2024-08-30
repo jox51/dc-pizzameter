@@ -48,6 +48,7 @@ class EmailService
 
         // replicate the campaign
         $response = $api->post("/campaigns/{$campaignId}/actions/replicate");
+        Log::info("Campaign replication response:", ['response' => $response]);
 
         // get the new campaign id
         $newCampaignId = $response['id'];
@@ -59,14 +60,25 @@ class EmailService
                 'preview_text' => "DC Pizza Meter Alert: {$eventProbabilityTier} Event Probability",
             ],
         ]);
+        Log::info("Campaign settings update response:", ['response' => $newCampaignResponse]);
 
      // create html content
       $html = $this->getFormattedHtml($eventProbabilityTier, $pizzaBarRatio);
+      
+      // Encode the HTML content
+      $encodedHtml = base64_encode($html);
+
+      // Log the HTML content
+      Log::info("Generated HTML content:", ['html' => $html]);
 
       // set campaign content
-      $campaignContentResponse =  $api->put("/campaigns/{$newCampaignId}/content", [
-            'html' => $html,
+      $campaignContentResponse = $api->put("/campaigns/{$newCampaignId}/content", [
+            'html' => $encodedHtml,
+            'plain_text' => strip_tags($html), // Add a plain text version
         ]);
+
+      // Log the response from setting campaign content
+      Log::info("Campaign content set response:", ['response' => $campaignContentResponse]);
 
         
       
