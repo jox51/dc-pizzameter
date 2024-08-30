@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Resend\Laravel\Facades\Resend;
 use Spatie\Newsletter\Facades\Newsletter;
@@ -86,21 +87,21 @@ class EmailService
        if ($campaignStatusResponse['status'] === 'sent') {
            // Delete the campaign to not clutter the account
            $deleteCampaignResponse = $api->delete("/campaigns/{$newCampaignId}");
-           echo "Campaign sent successfully and deleted!";
+           Log::info("Campaign sent successfully and deleted!");
            return;
        } else {
            if ($attempt < $maxAttempts) {
-               echo "Campaign not yet sent. Waiting to retry... (Attempt {$attempt}/{$maxAttempts})\n";
+               Log::info("Campaign not yet sent. Waiting to retry... (Attempt {$attempt}/{$maxAttempts})\n");
                sleep($delaySeconds);
            } else {
-               echo "Max attempts reached. Campaign status: {$campaignStatusResponse['status']}";
+               Log::info("Max attempts reached. Campaign status: {$campaignStatusResponse['status']}");
            }
        }
    }
 
    
    // If we've reached this point, the campaign wasn't deleted
-   echo "Failed to delete campaign after {$maxAttempts} attempts.";
+   Log::info("Failed to delete campaign after {$maxAttempts} attempts.");
 //    dd($sendCampaignResponse, $maxAttempts, $delaySeconds, $attempt, $campaignStatusResponse);
    
 
