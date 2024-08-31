@@ -20,7 +20,7 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="flex items-center">
-                        <Link
+                        {/* <Link
                             href="/features"
                             className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                         >
@@ -31,7 +31,7 @@ const Navbar = () => {
                             className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                         >
                             About
-                        </Link>
+                        </Link> */}
                         <Link
                             href="/contact"
                             className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
