@@ -42,6 +42,6 @@ Route::get('/email/preview', [EmailPreviewController::class, 'previewEventProbab
 Route::post('/subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 
 // Testing Mailchimp API
-// Route::get('/mailchimp', [EmailService::class, 'updateAndSendMailchimpCampaign'])->name('mailchimp');
+Route::get('/mailchimp', [EmailService::class, 'updateAndSendMailchimpCampaign'])->name('mailchimp');
 
 require __DIR__.'/auth.php';

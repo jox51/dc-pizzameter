@@ -65,7 +65,9 @@ class PopularityAverageService
 
     private function calculateEventProbabilityTier($ratio)
     {
-        if ($ratio >= 2.0) {
+        if ($ratio >= 3.0) {
+            return 'Extreme';
+        } elseif ($ratio >= 2.0) {
             return 'High';
         } elseif ($ratio >= 1.0) {
             return 'Medium';

@@ -47,6 +47,7 @@ return [
 
     'mailchimp' => [
     // ... other Mailchimp config options ...
-    'campaign_id' => env('MAILCHIMP_CAMPAIGN_ID'),
+    'high_campaign_id' => env('MAILCHIMP_HIGH_CAMPAIGN_ID'),
+    'extreme_campaign_id' => env('MAILCHIMP_EXTREME_CAMPAIGN_ID'),
 ],
 ];
