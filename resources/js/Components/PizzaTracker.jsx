@@ -36,6 +36,7 @@ const PizzaTracker = () => {
     }
 
     const getEventEmoji = (probability) => {
+        if (probability === "Extreme") return "🚨🚨";
         if (probability === "High") return "🚨";
         if (probability === "Medium") return "🤔";
         return "🤷";

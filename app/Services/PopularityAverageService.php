@@ -55,7 +55,7 @@ class PopularityAverageService
 
     private function sendAlertIfNeeded(PopularityAverage $popularityAverage)
     {
-        if (in_array($popularityAverage->event_probability_tier, ['Medium', 'High'])) {
+        if (in_array($popularityAverage->event_probability_tier, ['High', 'Extreme'])) {
             $this->emailService->sendEventProbabilityAlert(
                 $popularityAverage->event_probability_tier,
                 $popularityAverage->pizza_bar_ratio

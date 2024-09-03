@@ -41,11 +41,10 @@ class EmailService
 
         if ($level === 'High') {
             $campaignId = config('newsletter.mailchimp.high_campaign_id');
-        } else {
+        } 
+        elseif ($level === 'Extreme') {
             $campaignId = config('newsletter.mailchimp.extreme_campaign_id');
         }
-
-
         
         // exposes the Mailchimp API
         $api = Newsletter::getApi();
