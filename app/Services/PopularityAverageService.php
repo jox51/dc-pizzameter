@@ -78,7 +78,17 @@ class PopularityAverageService
 
     public function getLatestAverages()
     {
-        $averages = PopularityAverage::latest('iteration_id')->first();
+        // Get the latest iteration ID
+        $latestIterationId = PopularityAverage::max('iteration_id');
+
+        // If there are multiple records with the latest iteration ID, get the last one
+        $query = PopularityAverage::where('iteration_id', $latestIterationId);
+        if ($query->count() > 1) {
+            $averages = $query->latest('id')->first();
+        } else {
+            $averages = $query->first();
+        }
+        $averages = PopularityAverage::latest('iteration_id')->last();
         
         if ($averages) {
             $averages->pizza_average_popularity = round($averages->pizza_average_popularity, 2);
