@@ -88,7 +88,7 @@ class PopularityAverageService
         } else {
             $averages = $query->first();
         }
-        $averages = PopularityAverage::latest('iteration_id')->last();
+      
         
         if ($averages) {
             $averages->pizza_average_popularity = round($averages->pizza_average_popularity, 2);
